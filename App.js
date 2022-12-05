@@ -1,11 +1,13 @@
 import { useState } from "react";
 import "./App.css";
 
+
 import BackgroundAnimation from "../src/background/BackgroundAnimation";
 import Income from "../src/income/Income";
 import Expense from "../src/expense/Expense";
 import Form from "../src/form/Form";
 import ItemList from "../src/form/ItemList";
+
 
 function App() {
   const [lists, setLists] = useState([]);
@@ -16,6 +18,7 @@ function App() {
     setTotal(sumCalc);
     setLists(newList);
   };
+  
   const caculateAmount = (list) => {
     const sumAmount = list.reduce((initialValue, item) => {
       if (item.type === "Income") return initialValue + +item.amount;
@@ -29,10 +32,10 @@ function App() {
   return (
     <div className="App">
       <BackgroundAnimation />
-      <Income />
+      {/* <Income lists={lists} total={total}/> */}
       <Form addItem={addItem} total={total} />
       <ItemList lists={lists} removeItem={removeItem} />
-      <Expense />
+      {/* <Expense/> */}
     </div>
   );
 }

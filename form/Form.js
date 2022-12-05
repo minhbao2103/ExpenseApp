@@ -6,12 +6,11 @@ import '../App.css'
 function Form({addItem,total}) {
   const initialObject = { id:'', 
                           amount:'',
-                          date:null,
+                          date:'',
                           type:'Income',
-                          cagetory:'Category',
+                          category:'Business',
                         }
   const [list,setlist] = useState(initialObject)
-  
   const handleInputOnchange = (e) => {
     const { name, value } = e.target;
     setlist({
@@ -23,7 +22,7 @@ function Form({addItem,total}) {
   const handleSubmit = (e) => {
     e.preventDefault()
     addItem({...list , id: uuidv4()})
-    setlist({...list, amount:'',date:null})
+    setlist({...list, amount:'',date:''})
   }
   return (
     <div className= 'mainForm'>
@@ -52,7 +51,7 @@ function Form({addItem,total}) {
   <option value="Expense">Expense</option>
 </select>
 
-<select className="formSelect" aria-label="Default select example" name='cagetory' onChange={handleInputOnchange}
+<select className="formSelect" aria-label="Default select example" name='category' onChange={handleInputOnchange}
         style={{
           width:'200px',
           height:'32px',
@@ -60,14 +59,13 @@ function Form({addItem,total}) {
           
         }}
       >
-  <option selected>Cagetory</option>
-  <option value="Business">Business</option>
-  <option value="Investments">Investments</option>
-  <option value="Extra income">Extra income</option>
-  <option value="Gifts">Gifts</option>
-  <option value="Salary">Salary</option>
-  <option value="Saving">Saving</option>
-  <option value="Deposits">Deposits</option>
+  <option name="Business">Business</option>
+  <option name="Investments">Investments</option>
+  <option name="Extra income">Extra income</option>
+  <option name="Gifts">Gifts</option>
+  <option name="Salary">Salary</option>
+  <option name="Saving">Saving</option>
+  <option name="Deposits">Deposits</option>
 </select>
 </div>
 
